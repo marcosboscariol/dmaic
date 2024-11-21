@@ -39,6 +39,12 @@ control_page = st.Page(
     icon="📊"
 )
 
+indicadores_page = st.Page(
+    page='modules/indicadores/indicadores_page.py',
+    title='Indicadores',
+    icon="📈"
+)
+
 
 if 'username' not in st.session_state:
     st.session_state.username = None
@@ -50,13 +56,15 @@ if 'password' not in st.session_state:
 def main():
     modules = {
         'Login': [login_page],
-        'DMAIC': [define_page, measure_page, improve_page, analyze_page, control_page]
+        'DMAIC': [define_page, measure_page, improve_page, analyze_page, control_page],
+        'Indicadores': [indicadores_page]
     }
 
     if st.session_state.username != None:
         modules.pop('Login')
     else:
         modules.pop('DMAIC')
+        modules.pop('Indicadores')
 
     pg = st.navigation(modules)
     pg.run()

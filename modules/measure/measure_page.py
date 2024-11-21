@@ -4,7 +4,17 @@ import cohere
 # Substitua 'your-cohere-api-key' pela sua chave de API da Cohere
 cohere_client = cohere.Client('Sid93B0NN5Vc3luKBnbaD07IYTj93V1HGix5nDEe')
 
+
+selecionar_projeto = st.sidebar.selectbox(
+    'Selecione o Projeto', ['Projeto 1', 'Projeto 2'])
+
+st.markdown(f'Projeto selecionado: __{selecionar_projeto}__')
+
+
 st.title("Measure")
+
+with st.expander('__Mapa do Processo__'):
+    st.text('Mapa do Processo')
 
 with st.expander('__Diagrama de Ishikawa__'):
     # Input para o problema prioritário
@@ -91,7 +101,8 @@ with st.expander('__Diagrama de Ishikawa__'):
                 # Gerar sugestão usando a API da Cohere
                 response = cohere_client.generate(
                     model='command-r-plus',  # Utilize um modelo adequado para geração de texto
-                    prompt=f"Proponha uma solução para o seguinte problema: {prioritized_value}.",
+                    prompt=f"Proponha uma solução para o seguinte problema: {
+                        prioritized_value}.",
                     # max_tokens=150,  # Limitar o comprimento da resposta
                     temperature=0.7
                 )
@@ -101,3 +112,22 @@ with st.expander('__Diagrama de Ishikawa__'):
                 st.write(suggested_solution)
             except Exception as e:
                 st.error(f"Erro ao gerar sugestão: {e}")
+
+with st.expander('__Matriz Causa e Efeito__'):
+    st.subheader('Matriz Causa e Efeito')
+
+
+with st.expander('__Ánalise da Medição__'):
+    st.subheader('Ánalise da Medição')
+
+
+with st.expander('__Coleta de Dados__'):
+    st.subheader('Coelta de Dados')
+
+
+with st.expander('__Capacidade do Processo__'):
+    st.subheader('Capacidade do Processo')
+
+
+with st.expander('__Mapa Mental__'):
+    st.subheader('Mapa Mental')

@@ -3,6 +3,11 @@ import pandas as pd
 import plotly.express as px
 
 
+selecionar_projeto = st.sidebar.selectbox(
+    'Selecione o Projeto', ['Projeto 1', 'Projeto 2'])
+
+st.markdown(f'Projeto selecionado: __{selecionar_projeto}__')
+
 st.title("Define")
 
 # Análise de Viabilidade
