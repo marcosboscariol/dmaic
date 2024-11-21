@@ -91,8 +91,7 @@ with st.expander('__Diagrama de Ishikawa__'):
                 # Gerar sugestão usando a API da Cohere
                 response = cohere_client.generate(
                     model='command-r-plus',  # Utilize um modelo adequado para geração de texto
-                    prompt=f"Proponha uma solução para o seguinte problema: {
-                        prioritized_value}.",
+                    prompt=f"Proponha uma solução para o seguinte problema: {prioritized_value}.",
                     # max_tokens=150,  # Limitar o comprimento da resposta
                     temperature=0.7
                 )
