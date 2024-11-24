@@ -14,7 +14,13 @@ st.markdown(f'Projeto selecionado: __{selecionar_projeto}__')
 st.title("Measure")
 
 with st.expander('__Mapa do Processo__'):
-    st.text('Mapa do Processo')
+    st.write("Mapeamento de processos é uma ferramenta gerencial que tem como objetivo identificar as informações, o fluxo, as partes envolvidas, capacidades, competências e recursos para atender todos os componentes necessários fazendo com que todas as atividades de uma empresa ou negócio saiam conforme o planejado, com poucas alterações e sem problemas.")
+
+    imagem_mapa_processo = st.file_uploader(
+        "Carregue sua imagem do Mapa do Processo")
+
+    if imagem_mapa_processo:
+        st.image(imagem_mapa_processo)
 
 with st.expander('__Diagrama de Ishikawa__'):
     # Input para o problema prioritário
@@ -101,8 +107,7 @@ with st.expander('__Diagrama de Ishikawa__'):
                 # Gerar sugestão usando a API da Cohere
                 response = cohere_client.generate(
                     model='command-r-plus',  # Utilize um modelo adequado para geração de texto
-                    prompt=f"Proponha uma solução para o seguinte problema: {
-                        prioritized_value}.",
+                    prompt=f"Proponha uma solução para o seguinte problema: {prioritized_value}.",
                     # max_tokens=150,  # Limitar o comprimento da resposta
                     temperature=0.7
                 )
