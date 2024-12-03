@@ -3,6 +3,19 @@ import streamlit as st
 
 st.set_page_config(layout="wide")
 
+intro_page = st.Page(
+    page='modules/intro/intro_page.py',
+    title="Introdução",
+    icon='📚'
+)
+
+home_page = st.Page(
+    page='modules/home/home_page.py',
+    title="Home",
+    icon='🏠'
+)
+
+
 login_page = st.Page(
     page='modules/login/login_page.py',
     title="Login",
@@ -56,6 +69,8 @@ if 'password' not in st.session_state:
 def main():
     modules = {
         'Login': [login_page],
+        'Introdução': [intro_page],
+        'Home': [home_page],
         'DMAIC': [define_page, measure_page, improve_page, analyze_page, control_page],
         'Indicadores': [indicadores_page]
     }
@@ -65,6 +80,8 @@ def main():
     else:
         modules.pop('DMAIC')
         modules.pop('Indicadores')
+        modules.pop('Home')
+        modules.pop('Introdução')
 
     pg = st.navigation(modules)
     pg.run()
