@@ -12,8 +12,6 @@ st.markdown(f'Projeto selecionado: __{selecionar_projeto}__')
 
 st.title("Measure")
 
-st.text(st.session_state_importancia)
-
 with st.expander('__Mapa do Processo__'):
     mapa_processo_view()
 

@@ -99,5 +99,3 @@ def project_charter_view():
             st.write(f"__{value}__")
     else:
         st.write("Nenhum valor adicionado ainda.")
-
-    st.text(st.session_state_importancia)
