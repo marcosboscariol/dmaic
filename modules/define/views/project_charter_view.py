@@ -25,9 +25,9 @@ def project_charter_view():
 
     st.write("#### Importância do Processo")
 
-    importancia_do_processo = st.text_area(
+    st.session_state_importancia = st.text_area(
         "Ligação com a Estratégia", help="_Objetivo estratégico e meta específica à qual o projeto está ligado._ __Exemplo:__ Objetivo: Aumentar a Receita Operacional Líquida até 2020. Meta: Aumentar 2 pontos percentuais.]")
-    st.session_state_importancia = importancia_do_processo
+
     st.write("#### Problema do processo")
 
     problema_do_processo = st.text_area(
