@@ -7,6 +7,24 @@ cohere_client = cohere.Client('Sid93B0NN5Vc3luKBnbaD07IYTj93V1HGix5nDEe')
 
 
 def ishikawa_view():
+    pergunta_ishikawa = st.text_area(
+        label='Insira uma pergunta sobre o Ishikawa')
+    if st.button("Perguntar a IA"):
+        try:
+            # Gerar sugestão usando a API da Cohere
+            response2 = cohere_client.generate(
+                model='command-r-plus',  # Utilize um modelo adequado para geração de texto
+                prompt=f"Levando em conta que o objetivo do projeto é {st.session_state_importancia}, e essa pergunta está no contexto da ferramenta ishikawa, responda essa pergunta: {pergunta_ishikawa}.",
+                # max_tokens=150,  # Limitar o comprimento da resposta
+                temperature=0.7
+            )
+
+            suggested_solution = response2.generations[0].text
+            st.write("Resposta da IA:")
+            st.write(suggested_solution)
+        except Exception as e:
+            st.error(f"Erro ao gerar sugestão: {e}")
+
     # Input para o problema prioritário
     problema_prioritario = st.text_input("Insira o problema prioritário:")
 
